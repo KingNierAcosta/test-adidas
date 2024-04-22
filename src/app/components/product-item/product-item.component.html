@@ -1,24 +1,19 @@
-<div class="flex flex-col cursor-pointer item-container hover:outline hover:outline-1">
+<div (click)="goToProductDetails()" class="flex flex-col cursor-pointer item-container hover:outline hover:outline-1">
   <div class="relative">
     <div class="absolute right-0 top-4">
       <app-btn-icon-favorite></app-btn-icon-favorite>
     </div>
-    <img
-      src="https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/317facedf01a424f885faf4200f52241_9366/adilette-22-slides.jpg"
-      alt="">
+    <img [src]="product.Image1" alt="{{ product.Name }}">
 
     <div class="absolute bottom-0 mx-1 px-1 py-0.5 bg-white price-container">
-      <span>$33</span>
+      <span>{{ product.Price }}</span>
     </div>
   </div>
 
   <div class="p-2.5 pb-5">
-    <p class="text-sm">Adicolor Classics SST Track Jacket</p>
-    <p class="text-sm font-light">Women's Originals</p>
-    <p class="text-sm font-light">5 colors, has matching item</p>
+    <p class="text-sm">{{ product.Name }}</p>
+    <p class="text-sm font-light">{{ product.Category }}</p>
+    <p class="text-sm font-light">{{ product.Colors }}</p>
 
   </div>
-
-
-
 </div>

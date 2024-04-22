@@ -1,0 +1,37 @@
+<div class="flex justify-between py-7 px-5">
+  <div class="w-full">
+    <img [src]="product.Image1" alt="">
+
+    <div class="w-full mt-5">
+      <app-accordion [product]="product"></app-accordion>
+    </div>
+
+
+  </div>
+  <div class="w-1/3 px-5">
+    <div class="flex justify-between">
+      <p>{{ product.Category }}</p>
+      <div class="flex items-center">
+        <app-rating [rating]="product.Reviews?.rating || 0" successClass="text-black-300"></app-rating>
+        <span>{{ product.Reviews?.votes || "" }}</span>
+      </div>
+    </div>
+
+    <h1 class="text-3xl font-bold mt-2.5">{{ product.Name }}</h1>
+    <p class="font-bold mt-2.5">{{ product.Price }}</p>
+    <p class="mt-10">{{ product.Promo_apply }}</p>
+
+    <div class="mt-10">
+      <p class="font-bold">Colors</p>
+      <div class="grid grid-cols-5 grid-rows-1 gap-1 mt-2.5">
+        @for (color of product.Color_detail; track $index) {
+        <a class="border-b-4 border-transparent hover:border-black cursor-pointer"
+          [class.border-black]="colorSelected?.color === color.color" (click)="colorSelected = color">
+          <img [src]="color.image_url" alt="">
+        </a>
+        }
+      </div>
+      <p class="text-sm mt-1">{{ colorSelected?.color }}</p>
+    </div>
+  </div>
+</div>
