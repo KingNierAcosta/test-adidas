@@ -1,0 +1,90 @@
+<h1>
+  <button type="button" (click)="expandedAccordionIndex = expandedAccordionIndex === 1 ? 0 : 1"
+    class="flex items-center justify-between w-full py-7 px-4 font-semibold text-black border-t border-gray-300 gap-3"
+    [class.border-b]="expandedAccordionIndex !== 1" aria-expanded="false" aria-controls="accordion-flush-body-1">
+    <span>Reviews ({{product.Reviews?.votes || ""}})</span>
+    <div class="flex justify-center items-center gap-1">
+      <p>{{product.Reviews?.rating || ""}}</p>
+      <app-rating [rating]="product.Reviews?.rating || 0"></app-rating>
+      <svg [class.rotate-180]="expandedAccordionIndex !== 1" class="w-3 h-3 shrink-0" aria-hidden="true"
+        xmlns="http://www.w3.org/1000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5 5 1 1 5" />
+      </svg>
+    </div>
+  </button>
+</h1>
+<div [class.hidden]="expandedAccordionIndex !== 1" class="flex justify-between px-4 mb-4">
+  <div class="flex items-center justify-center gap-2">
+    <p class="text-4xl font-bold">{{ product.Reviews?.rating }}</p>
+    <app-rating [rating]="product.Reviews?.rating || 0"></app-rating>
+  </div>
+  <button type="button" class="w-auto h-12 border border-black px-4 uppercase font-semibold">
+    <span>Write a review</span>
+  </button>
+</div>
+
+<h1>
+  <button type="button" (click)="expandedAccordionIndex = expandedAccordionIndex === 2 ? 0 : 2"
+    class="flex items-center justify-between w-full py-7 px-4 font-semibold text-black border-t border-gray-300 gap-3"
+    [class.border-b]="expandedAccordionIndex !== 2" aria-expanded="false" aria-controls="accordion-flush-body-1">
+    <span>Description</span>
+
+    <svg [class.rotate-180]="expandedAccordionIndex !== 2" class="w-3 h-3 shrink-0" aria-hidden="true"
+      xmlns="http://www.w3.org/1000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5 5 1 1 5" />
+    </svg>
+  </button>
+</h1>
+<div [class.hidden]="expandedAccordionIndex !== 2" class="flex px-4 mb-4 gap-4">
+  <div class="w-1/2">
+    <h3 class="font-bold text-3xl">{{ product.Description_title }}</h3>
+    <p class="mt-2.5">{{ product.Description_content }}</p>
+  </div>
+  <div class="w-1/2">
+    <img [src]="product.Image1" alt="{{product.Name}}">
+  </div>
+</div>
+
+
+
+<h1>
+  <button type="button" (click)="expandedAccordionIndex = expandedAccordionIndex === 3 ? 0 : 3"
+    class="flex items-center justify-between w-full py-7 px-4 font-semibold text-black border-t border-gray-300 gap-3"
+    [class.border-b]="expandedAccordionIndex !== 3" aria-expanded="false" aria-controls="accordion-flush-body-1">
+    <span>Details</span>
+
+    <svg [class.rotate-180]="expandedAccordionIndex !== 3" class="w-3 h-3 shrink-0" aria-hidden="true"
+      xmlns="http://www.w3.org/1000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5 5 1 1 5" />
+    </svg>
+  </button>
+</h1>
+<div [class.hidden]="expandedAccordionIndex !== 3" class="px-4 mb-4">
+  <ul class="grid grid-cols-2 auto-rows-auto  space-y-1  list-disc list-inside ">
+    @for (item of product.Details | appSplit; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>
+
+
+<h1>
+  <button type="button" (click)="expandedAccordionIndex = expandedAccordionIndex === 4 ? 0 : 4"
+    class="flex items-center justify-between w-full py-7 px-4 font-semibold text-black border-t border-gray-300 gap-3"
+    [class.border-b]="expandedAccordionIndex !== 4" aria-expanded="false" aria-controls="accordion-flush-body-1">
+    <span>Care</span>
+
+    <svg [class.rotate-180]="expandedAccordionIndex !== 4" class="w-3 h-3 shrink-0" aria-hidden="true"
+      xmlns="http://www.w3.org/1000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5 5 1 1 5" />
+    </svg>
+  </button>
+</h1>
+<div [class.hidden]="expandedAccordionIndex !== 4" class="px-4 mb-4">
+  <h3 class="font-bold text-3xl">{{ product.Care?.title }}</h3>
+  <ul class="grid grid-cols-2 auto-rows-auto  space-y-1  list-disc list-inside ">
+    @for (item of product.Care?.content; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>

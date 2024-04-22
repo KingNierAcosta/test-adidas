@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HeaderTopComponent } from "../header-top/header-top.component";
 import { MainMenuComponent } from "../main-menu/main-menu.component";
 import { AuxiliaryMenuComponent } from "../auxiliary-menu/auxiliary-menu.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -14,7 +15,8 @@ import { AuxiliaryMenuComponent } from "../auxiliary-menu/auxiliary-menu.compone
         CommonModule,
         HeaderTopComponent,
         MainMenuComponent,
-        AuxiliaryMenuComponent
+        AuxiliaryMenuComponent,
+        RouterLink
     ]
 })
 export class HeaderComponent { }
