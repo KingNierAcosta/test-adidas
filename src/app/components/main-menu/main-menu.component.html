@@ -1,0 +1,8 @@
+<ul class="flex flex-row justify-start h-12 items-center">
+  @for (item of items; track $index) {
+  <li class="flex h-full cursor-pointer">
+    <a class="flex justify-center items-center px-2.5 border-b-3 border-transparent hover:border-black"
+      [ngClass]="item.className" role="menu">{{ item.name }}</a>
+  </li>
+  }
+</ul>
