@@ -11,5 +11,6 @@ export const routes: Routes = [
     path: 'product/:productName',
     component: ProductDetailsComponent
   },
-  { path: '', redirectTo: 'products', pathMatch: 'full' }
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '**', redirectTo: 'products' }
 ];
