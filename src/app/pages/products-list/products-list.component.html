@@ -1,5 +1,11 @@
 <div class="grid grid-cols-4 gap-0.5 mt-4 px-4">
-  @for (product of products; track $index) {
-  <app-product-item [product]="product"></app-product-item>
+  @if (loading()) {
+    @for (item of [].constructor(10); track $index) {
+    <app-skeleton-loading-product-item></app-skeleton-loading-product-item>
+    }
+  } @else {
+    @for (product of products(); track $index) {
+    <app-product-item [product]="product"></app-product-item>
+    }
   }
 </div>
