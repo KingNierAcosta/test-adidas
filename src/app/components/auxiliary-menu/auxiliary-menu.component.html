@@ -1,6 +1,8 @@
 <div class="flex flex-row h-12 justify-center items-center">
 
-  <app-input-search></app-input-search>
+  <div class="hidden lg:block">
+    <app-input-search></app-input-search>
+  </div>
 
   <button class="flex justify-center items-center w-12 relative cursor-pointer">
     <span title="">
@@ -13,7 +15,16 @@
     <span class="absolute -top-3 text-sm left-6 animate-bounce rounded-full w-5 h-5 bg-yellow-500">1</span>
   </button>
 
-  <app-btn-icon-favorite></app-btn-icon-favorite>
+  <div class="hidden lg:block">
+    <app-btn-icon-favorite></app-btn-icon-favorite>
+  </div>
+
+  <span class="lg:hidden" title="Search">
+    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+    </svg>
+  </span>
 
   <a class="flex justify-center items-center w-12 cursor-pointer">
     <span title="">
