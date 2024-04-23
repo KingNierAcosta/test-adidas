@@ -13,12 +13,12 @@
     </div>
   </button>
 </h1>
-<div [class.hidden]="expandedAccordionIndex !== 1" class="flex justify-between px-4 mb-4">
+<div [class.hidden]="expandedAccordionIndex !== 1" class="flex flex-col xs:flex-row justify-between px-4 mb-4">
   <div class="flex items-center justify-center gap-2">
-    <p class="text-4xl font-bold">{{ product.Reviews?.rating }}</p>
+    <p class="text-3xl md:text-4xl font-bold">{{ product.Reviews?.rating }}</p>
     <app-rating [rating]="product.Reviews?.rating || 0"></app-rating>
   </div>
-  <button type="button" class="w-auto h-12 border border-black px-4 uppercase font-semibold">
+  <button type="button" class="w-auto h-12 border border-black px-4 uppercase font-semibold mt-2 xs:mt-0">
     <span>Write a review</span>
   </button>
 </div>
@@ -36,11 +36,11 @@
   </button>
 </h1>
 <div [class.hidden]="expandedAccordionIndex !== 2" class="flex px-4 mb-4 gap-4">
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <h3 class="font-bold text-3xl">{{ product.Description_title }}</h3>
     <p class="mt-2.5">{{ product.Description_content }}</p>
   </div>
-  <div class="w-1/2">
+  <div class="w-1/2 hidden md:block">
     <img [src]="product.Image1" alt="{{product.Name}}">
   </div>
 </div>
@@ -60,7 +60,7 @@
   </button>
 </h1>
 <div [class.hidden]="expandedAccordionIndex !== 3" class="px-4 mb-4">
-  <ul class="grid grid-cols-2 auto-rows-auto  space-y-1  list-disc list-inside ">
+  <ul class="grid grid-cols-1 sm:grid-cols-2 auto-rows-auto space-y-1 list-disc list-inside ">
     @for (item of product.Details | appSplit; track $index) {
     <li>{{ item }}</li>
     }
@@ -82,7 +82,7 @@
 </h1>
 <div [class.hidden]="expandedAccordionIndex !== 4" class="px-4 mb-4">
   <h3 class="font-bold text-3xl">{{ product.Care?.title }}</h3>
-  <ul class="grid grid-cols-2 auto-rows-auto  space-y-1  list-disc list-inside ">
+  <ul class="grid grid-cols-1 sm:grid-cols-2 auto-rows-auto space-y-1 list-disc list-inside ">
     @for (item of product.Care?.content; track $index) {
     <li>{{ item }}</li>
     }

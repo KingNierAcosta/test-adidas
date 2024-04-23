@@ -1,4 +1,4 @@
-<div class="grid grid-cols-4 gap-0.5 mt-4 px-4">
+<div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5 mt-4 px-4">
   @if (loading()) {
     @for (item of [].constructor(10); track $index) {
     <app-skeleton-loading-product-item></app-skeleton-loading-product-item>

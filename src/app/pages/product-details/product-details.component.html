@@ -1,14 +1,18 @@
-<div class="flex justify-between py-7 px-5">
+<div class="flex flex-col lg:flex-row justify-between py-7 xs:px-5">
   <div class="w-full">
-    <img [src]="product.Image1" alt="">
+    <img class="w-full" [src]="product.Image1" alt="">
+
+    <div class="block lg:hidden">
+      <ng-template [ngTemplateOutlet]="colors"></ng-template>
+      <p class="mt-10 px-2 xs:px-0">{{ product.Promo_apply }}</p>
+    </div>
 
     <div class="w-full mt-5">
       <app-accordion [product]="product"></app-accordion>
     </div>
 
-
   </div>
-  <div class="w-1/3 px-5">
+  <div class="w-full lg:w-1/3 px-5 order-first lg:order-1 flex-grow">
     <div class="flex justify-between">
       <p>{{ product.Category }}</p>
       <div class="flex items-center">
@@ -18,20 +22,27 @@
     </div>
 
     <h1 class="text-3xl font-bold mt-2.5">{{ product.Name }}</h1>
-    <p class="font-bold mt-2.5">{{ product.Price }}</p>
-    <p class="mt-10">{{ product.Promo_apply }}</p>
+    <p class="font-bold mt-2.5 mb-2 lg:mb-0">{{ product.Price }}</p>
+    <p class="mt-10 hidden lg:block">{{ product.Promo_apply }}</p>
 
-    <div class="mt-10">
-      <p class="font-bold">Colors</p>
-      <div class="grid grid-cols-5 grid-rows-1 gap-1 mt-2.5">
-        @for (color of product.Color_detail; track $index) {
-        <a class="border-b-4 border-transparent hover:border-black cursor-pointer"
-          [class.border-black]="colorSelected?.color === color.color" (click)="colorSelected = color">
-          <img [src]="color.image_url" alt="">
-        </a>
-        }
-      </div>
-      <p class="text-sm mt-1">{{ colorSelected?.color }}</p>
+    <div class="hidden lg:block">
+      <ng-template [ngTemplateOutlet]="colors"></ng-template>
     </div>
+
   </div>
 </div>
+
+<ng-template #colors>
+  <div class="mt-10 px-2 xs:px-0">
+    <p class="font-bold">Colors</p>
+    <div class="grid grid-cols-5 grid-rows-1 gap-1 mt-2.5">
+      @for (color of product.Color_detail; track $index) {
+      <a class="border-b-4 border-transparent hover:border-black cursor-pointer"
+        [class.border-black]="colorSelected?.color === color.color" (click)="colorSelected = color">
+        <img [src]="color.image_url" alt="">
+      </a>
+      }
+    </div>
+    <p class="text-sm mt-1">{{ colorSelected?.color }}</p>
+  </div>
+</ng-template>
